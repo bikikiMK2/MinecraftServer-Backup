@@ -8,8 +8,9 @@ sleep 10
 screen -S minecraft -X stuff 'stop'"$(echo -ne '\r')"
 abouttime=10
 sleep $abouttime
+screen -S minecraft -X stuff 'cp -r worlds/world/ backups/'
 screen -S minecraft -X stuff 'zip -r world.zip world/'"$(echo -ne '\r')"
-mv world.zip world"$(date +%Y.%m.%d.%k%H)".zip "$(echo -ne '\r')"
-screen -S minecraft -X stuff 'mv world.zip backup/'"$(echo -ne '\r')"
+mv backups/world.zip world"$(date +%Y.%m.%d.%k%H)".zip "$(echo -ne '\r')"
+screen -S minecraft -X stuff 'mv world.zip backups/'"$(echo -ne '\r')"
 screen -S minecraft -X stuff 'cd ..'"$(echo -ne '\r')"
 screen -S minecraft -X stuff 'LD_LIBRARY_PATH=. ./bedrock_server'"$(echo -ne '\r')"
